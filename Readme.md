@@ -9,9 +9,17 @@ This project is an open-source implementation of a machine learning model for **
 
 ## 🔍 Project Overview
 
-Cancer detection is a crucial step in early diagnosis and treatment. This project uses machine learning algorithms to classify whether a tumor is **benign** or **malignant** based on various medical attributes.
+We make a cancer detect project using machine learning And Deep Learning.
+So first step is that we make a machine learning model and then we make a deep learning model.
+1-10 Model make. and combine them
 
+So we are in leraning stage build that model and make it better.
 ---
+## Lung Cancer Detection
+First step make Lung cancer detection model using machine learning and deep learning.
+Dataset is from kaggle.
+Link:- 
+
 
 ## 📁 Dataset
 
@@ -60,11 +68,6 @@ jupyter notebook Cancer_Detection.ipynb
 
 The model achieves high accuracy in detecting cancer based on the training dataset. You can also try predicting on custom input using the model.
 
-| Model             | Accuracy |
-|------------------|----------|
-| Logistic Regression | 96%     |
-| Random Forest       | 98%     |
-| SVM                 | 97%     |
 
 ---
 
@@ -86,11 +89,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ---
 
 ## 🙋‍♂️ Author
-
-Made with ❤️ by **Sandeep Muhal**
-
-- [LinkedIn](https://www.linkedin.com/in/sandeepmuhal)
-- [YouTube](https://www.youtube.com/@SandeepMuhal)
-- [GitHub](https://github.com/sandeepmuhal)
-
----
