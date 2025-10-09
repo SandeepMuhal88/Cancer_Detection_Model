@@ -2,3 +2,4 @@
 .env
 .vscode
 Data
+brain_tumer_model.pth
