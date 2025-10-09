@@ -5,12 +5,14 @@ from torchvision import transforms
 
 # -----------------------------
 # Load your trained model
-# -----------------------------
-model = torch.load("model_full.pth", map_location=torch.device("cpu"))
-model.eval()
-
+# ----------------------------
 # Class names
 classes = ['glioma', 'meningioma', 'notumor', 'pituitary']
+from function import CNN  # or define CNN above
+model = CNN(num_classes=4)
+model.load_state_dict(torch.load("model_weights.pth", map_location=torch.device("cpu")))
+model.eval()
+
 # Image transformation (same as used during training)
 transform = transforms.Compose([
     transforms.Resize((224, 224)),   # Adjust size to your model input
