@@ -1,6 +1,2 @@
-model_full.pth
-model_weights.pth
-model.onnx
-model.h5
-tr-gl_0011.jpg
-tummor.png
+model.pth
+Data
