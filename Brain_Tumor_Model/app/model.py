@@ -1,15 +1,18 @@
 import torch
 import torch.nn as nn
+import torchvision.transforms as transforms
 from PIL import Image
-from torchvision import transforms
 
+
+##THE CNN Architecture
+#THE CNN Architecture
 class CNN(nn.Module):
-    def __init__(self, input_channels):
+    def __init__(self):
         super().__init__()
 
         self.features = nn.Sequential(
             # Block 1
-            nn.Conv2d(input_channels, 32, kernel_size=3, padding='same'),
+            nn.Conv2d(input_channels=3, 32, kernel_size=3, padding='same'),
             nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(2),
@@ -51,31 +54,22 @@ class CNN(nn.Module):
         return x
 
 
+# Image preprocessing function
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+])
 
-
-def load_model(model_path):
-    model = torch.load(model_path)
-    model.eval()
-    return model
-
-# Define class names (in same order as your training labels)
 classes = ['glioma', 'meningioma', 'notumor', 'pituitary']
+model=torch.load('model.pth',map_location=torch.device('cpu'))
 
-# Load model
-model = torch.load("model.pth", map_location=torch.device('cpu'))
-model.eval()
-
-# Prediction function
 def predict(image_path):
-    image = Image.open(image_path).convert("RGB")
-    image = transform(image).unsqueeze(0)  # add batch dimension
-
+    image = Image.open(image_path).convert('RGB')
+    image = transform(image)
+    image = image.unsqueeze(0)  # Add batch dimension
     with torch.no_grad():
         outputs = model(image)
         _, predicted = torch.max(outputs, 1)
-
-    print(f"\n🧠 Predicted Tumor Type: {classes[predicted.item()]}")
-    return classes[predicted.item()]
-
-# Example usage
-# predict("sample_mri.jpg")
+    predicted_class = classes[predicted.item()]
+    return predicted_class
